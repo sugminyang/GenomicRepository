@@ -16,7 +16,7 @@ public class GenomeDAOImpl implements GenomeDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<DisGeNetVO> selectAllData() {
+	public List<PatientVO> selectAllData() {
 		System.out.println("Enter a dao.selectAllData()");
 		return sqlSession.selectList(Namespace+".selectAllData");
 	}

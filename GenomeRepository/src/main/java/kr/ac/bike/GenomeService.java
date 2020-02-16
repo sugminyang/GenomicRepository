@@ -14,8 +14,8 @@ public class GenomeService {
 		System.out.println("Enter a service.selectAllData()");
 		
 		String line = "";
-		for(DisGeNetVO vo : genomeDAO.selectAllData()) {
-			line += vo.getGene_symbol() + ",";
+		for(PatientVO vo : genomeDAO.selectAllData()) {
+			line += vo.getSample() + ",";
 		}
 		
 		line = line.substring(0,line.length()-1);

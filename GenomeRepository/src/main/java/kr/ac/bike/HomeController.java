@@ -37,6 +37,7 @@ public class HomeController {
 		
 		return "home";
 	}
+	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String show(Model model) {
 //		Service에 특정 business logic 함수 하나 호출.
