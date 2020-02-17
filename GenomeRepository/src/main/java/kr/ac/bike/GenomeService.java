@@ -1,5 +1,8 @@
 package kr.ac.bike;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -9,17 +12,15 @@ public class GenomeService {
 
 	@Inject GenomeDAO genomeDAO;
 	
-	public String selectAllData() {
-//		List<String> say = genomeDAO.selectAllData();
+	public List<PatientVO> selectAllData() {
 		System.out.println("Enter a service.selectAllData()");
+		List<PatientVO> voList = new ArrayList<PatientVO>();
 		
-		String line = "";
 		for(PatientVO vo : genomeDAO.selectAllData()) {
-			line += vo.getSample() + ",";
+			voList.add(vo);
 		}
 		
-		line = line.substring(0,line.length()-1);
-		return line;
+		return voList;
 	}
 	
 }

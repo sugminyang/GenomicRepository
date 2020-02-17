@@ -9,8 +9,12 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
-
 <h1>What you want to say is : ${saying}</h1>
+
+
+<form role="form" method="get" action="/show">
+	<label>phenotype:</label>
+	<input name="phenotype" type="text"></input><button class="btn btn-primary" type="submit">submit</button>
+</form>
 </body>
 </html>
