@@ -1,32 +1,32 @@
-package kr.ac.bike;
+package kr.ac.bike.other;
 
-public class DisGeNetVO {
+public class DisgenetVO {
 // 필요한 속성들... DB column name과 동일하게.
-	int cnt_id;
+	String cnt_id;
 	String disease_name;	
 	String diseaseid;	
 	String gene_symbol;	
-	double score;	
-	double ei;	
+	String score;	
+	String ei;	
 	String geneid;	
 	String protein_class;	
-	double gene_dpi;
+	String gene_dpi;
 	String disease_semantic_type;	
-	int year_final;	
-	double gene_dsi;	
-	double el;	
+	String year_final;	
+	String gene_dsi;	
+	String el;	
 	String protein_class_name;	
 	String gene_pli;	
 	String disease_class_name;	
 	String source;	
 	String uniprotid;	
 	String disease_type;	
-	int year_initial;	
+	String year_initial;	
 	String disease_class;
-	public int getCnt_id() {
+	public String getCnt_id() {
 		return cnt_id;
 	}
-	public void setCnt_id(int cnt_id) {
+	public void setCnt_id(String cnt_id) {
 		this.cnt_id = cnt_id;
 	}
 	public String getDisease_name() {
@@ -47,16 +47,16 @@ public class DisGeNetVO {
 	public void setGene_symbol(String gene_symbol) {
 		this.gene_symbol = gene_symbol;
 	}
-	public double getScore() {
+	public String getScore() {
 		return score;
 	}
-	public void setScore(double score) {
+	public void setScore(String score) {
 		this.score = score;
 	}
-	public double getEi() {
+	public String getEi() {
 		return ei;
 	}
-	public void setEi(double ei) {
+	public void setEi(String ei) {
 		this.ei = ei;
 	}
 	public String getGeneid() {
@@ -71,10 +71,10 @@ public class DisGeNetVO {
 	public void setProtein_class(String protein_class) {
 		this.protein_class = protein_class;
 	}
-	public double getGene_dpi() {
+	public String getGene_dpi() {
 		return gene_dpi;
 	}
-	public void setGene_dpi(double gene_dpi) {
+	public void setGene_dpi(String gene_dpi) {
 		this.gene_dpi = gene_dpi;
 	}
 	public String getDisease_semantic_type() {
@@ -83,22 +83,22 @@ public class DisGeNetVO {
 	public void setDisease_semantic_type(String disease_semantic_type) {
 		this.disease_semantic_type = disease_semantic_type;
 	}
-	public int getYear_final() {
+	public String getYear_final() {
 		return year_final;
 	}
-	public void setYear_final(int year_final) {
+	public void setYear_final(String year_final) {
 		this.year_final = year_final;
 	}
-	public double getGene_dsi() {
+	public String getGene_dsi() {
 		return gene_dsi;
 	}
-	public void setGene_dsi(double gene_dsi) {
+	public void setGene_dsi(String gene_dsi) {
 		this.gene_dsi = gene_dsi;
 	}
-	public double getEl() {
+	public String getEl() {
 		return el;
 	}
-	public void setEl(double el) {
+	public void setEl(String el) {
 		this.el = el;
 	}
 	public String getProtein_class_name() {
@@ -137,10 +137,10 @@ public class DisGeNetVO {
 	public void setDisease_type(String disease_type) {
 		this.disease_type = disease_type;
 	}
-	public int getYear_initial() {
+	public String getYear_initial() {
 		return year_initial;
 	}
-	public void setYear_initial(int year_initial) {
+	public void setYear_initial(String year_initial) {
 		this.year_initial = year_initial;
 	}
 	public String getDisease_class() {

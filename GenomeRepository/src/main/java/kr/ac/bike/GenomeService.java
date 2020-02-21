@@ -7,6 +7,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import kr.ac.bike.other.DisgenetVO;
+
 @Service
 public class GenomeService {
 
@@ -23,7 +25,8 @@ public class GenomeService {
 		return voList;
 	}
 
-	public List<PatientVO> selectPhenotype(String phenotype) {	
+	public List<PatientVO> selectPhenotype(String phenotype) {
+		System.out.println("Enter a service.selectPhenotype()");
 		List<PatientVO> voList = new ArrayList<PatientVO>();
 		
 		for(PatientVO vo : genomeDAO.selectPhenotype(phenotype)) {
@@ -31,6 +34,35 @@ public class GenomeService {
 		}
 		
 		return voList;
+	}
+
+	public String selectAllDisGeNet() {
+		String genes = "";
+		for(DisgenetVO vo: genomeDAO.selectAllDisGeNet())	{
+			System.out.println(vo.getDisease_name() + ", " + vo.getGene_symbol());
+			genes += vo.getGene_symbol() + ",";
+		}
+		genes = genes.substring(0,genes.length()-1);
+		
+		return genes;
+		
+	}
+
+	public List<DisgenetVO> isExistDisease(String diseaseCode) {
+		List<DisgenetVO> voList = genomeDAO.isExistDisease(diseaseCode);
+
+		for(DisgenetVO vo : voList) {
+			System.out.println(vo.getDiseaseid() + ",  " + vo.getGene_symbol());
+		}
+				
+		return voList;
+	}
+
+	public void insertDiseaseGenes(List<DisgenetVO> tempList) {
+		for(DisgenetVO vo: tempList)	{
+			System.out.println(genomeDAO.insertDiseaseGenes(vo));
+		}
+		
 	}
 	
 }

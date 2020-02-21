@@ -10,7 +10,7 @@
 </h1>
 
 <h1>What you want to say is : ${saying}</h1>
-
+${data}
 
 <form role="form" method="get" action="/show">
 	<label>phenotype:</label>

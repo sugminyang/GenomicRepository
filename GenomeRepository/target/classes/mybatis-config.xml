@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
     <configuration>
          <typeAliases>
-         	<typeAlias type="kr.ac.bike.DisGeNetVO" alias="DisGeNetVO"/>
+         	<typeAlias type="kr.ac.bike.other.DisgenetVO" alias="DisgenetVO"/>
          	<typeAlias type="kr.ac.bike.PatientVO" alias="PatientVO"/>
         </typeAliases>
     </configuration>
