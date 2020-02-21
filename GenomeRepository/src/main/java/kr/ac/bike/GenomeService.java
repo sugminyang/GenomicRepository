@@ -22,5 +22,15 @@ public class GenomeService {
 		
 		return voList;
 	}
+
+	public List<PatientVO> selectPhenotype(String phenotype) {	
+		List<PatientVO> voList = new ArrayList<PatientVO>();
+		
+		for(PatientVO vo : genomeDAO.selectPhenotype(phenotype)) {
+			voList.add(vo);
+		}
+		
+		return voList;
+	}
 	
 }

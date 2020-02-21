@@ -6,8 +6,14 @@
 <mapper namespace="kr.ac.mappers.GenomeMapper">
     <select id="selectAllData" resultType="PatientVO">
         select distinct sinfo.dcc_project_code as code,	 wgs.patientID as sample
-        from sample_info as sinfo join wgs on(wgs.patientID = sinfo.donor_unique_id) 
-        where sinfo.dcc_project_code like 'COAD-US';
+        from sample_info as sinfo join wgs on(wgs.patientID = sinfo.donor_unique_id);
     </select>
+    
+	<select id="selectPhenotype" resultType="PatientVO" parameterType="string">
+        select distinct sinfo.dcc_project_code as code,	 wgs.patientID as sample
+        from sample_info as sinfo join wgs on(wgs.patientID = sinfo.donor_unique_id) 
+        where sinfo.dcc_project_code like #{phenotype};
+    </select>
+    
 </mapper>
 

@@ -38,8 +38,15 @@ public class HomeController {
 		String phenotype = request.getParameter("phenotype");
 		logger.info("phenotype: " +phenotype);
 		
+		
 		//		Service에 특정 business logic 함수 하나 호출.
-		List<PatientVO> voList = genomeService.selectAllData();
+		List<PatientVO> voList = null;
+		if(phenotype.length() == 0)	{
+			voList = genomeService.selectAllData();
+		}
+		else	{
+			voList = genomeService.selectPhenotype(phenotype);
+		}
 		
 		//vo객체들을 json형태로 변경해서 view에 전달해야함 !!
 		JSONArray jsonArray = null;
