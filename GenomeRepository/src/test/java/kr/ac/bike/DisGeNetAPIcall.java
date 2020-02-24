@@ -50,26 +50,26 @@ public class DisGeNetAPIcall {
 			String[] items = line.split("\t");
 			
 			DisgenetVO vo = new DisgenetVO();
-			vo.setScore( items[0]);
-			vo.setGene_dsi( items[1]);
-			vo.setDisease_name(items[2]);
-			vo.setGene_symbol(items[3]);
-			vo.setGene_dpi( items[4]);
-			vo.setDiseaseid(items[5]);
-			vo.setDisease_class(items[6]);
-			vo.setEl(items[7]);
-			vo.setProtein_class_name(items[8]);
-			vo.setDisease_semantic_type(items[9]);
-			vo.setGene_pli( items[10]);
-			vo.setYear_initial( items[11]);
-			vo.setEi( items[12]);
-			vo.setUniprotid(items[13]);
-			vo.setYear_final( items[14]);
-			vo.setDisease_class_name(items[15]);
-			vo.setGeneid(items[16]);
-			vo.setSource(items[17]);
-			vo.setProtein_class(items[18]);
-			vo.setDisease_type(items[19]);
+//			vo.setScore( items[0]);
+//			vo.setGene_dsi( items[1]);
+//			vo.setDisease_name(items[2]);
+//			vo.setGene_symbol(items[3]);
+//			vo.setGene_dpi( items[4]);
+//			vo.setDiseaseid(items[5]);
+//			vo.setDisease_class(items[6]);
+//			vo.setEl(items[7]);
+//			vo.setProtein_class_name(items[8]);
+//			vo.setDisease_semantic_type(items[9]);
+//			vo.setGene_pli( items[10]);
+//			vo.setYear_initial( items[11]);
+//			vo.setEi( items[12]);
+//			vo.setUniprotid(items[13]);
+//			vo.setYear_final( items[14]);
+//			vo.setDisease_class_name(items[15]);
+//			vo.setGeneid(items[16]);
+//			vo.setSource(items[17]);
+//			vo.setProtein_class(items[18]);
+//			vo.setDisease_type(items[19]);
 			
 			listResult.add(vo);
 		}

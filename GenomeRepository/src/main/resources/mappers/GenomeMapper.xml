@@ -18,15 +18,15 @@
  
     
     <select id="selectAllDisGeNet" resultType="DisgenetVO">
-    	SELECT * FROM test.disgenet_disease_genes;
+    	SELECT * FROM bio_version1.DiseaseAssociatedWithGene;
     </select>
     
     <select id="isExistDisease" resultType="DisgenetVO" parameterType="string">
-    	select * from test.disgenet_disease_genes where diseaseid like #{diseaseID};
+    	select * from bio_version1.DiseaseAssociatedWithGene where diseaseid like #{diseaseID};
     </select>    
     
     <insert id="insertDiseaseGenes" parameterType="DisgenetVO">
-    	INSERT INTO `test`.`disgenet_disease_genes` 
+    	INSERT INTO bio_version1.DiseaseAssociatedWithGene 
     	(`score`,`gene_dsi`,`disease_name`,`gene_symbol`,`gene_dpi`,`diseaseid`,`disease_class`,`el`,`protein_class_name`,`disease_semantic_type`,`gene_pli`,`year_initial`,`ei`,`uniprotid`,`year_final`,`disease_class_name`,`geneid`,`source`,`protein_class`,`disease_type`)
 		VALUES 
 		(#{score},#{gene_dsi},#{disease_name},#{gene_symbol},#{gene_dpi},#{diseaseid},#{disease_class},#{el},#{protein_class_name},#{disease_semantic_type},#{gene_pli},#{year_initial},#{ei},#{uniprotid},#{year_final},#{disease_class_name},#{geneid},#{source},#{protein_class},#{disease_type})

@@ -19,6 +19,7 @@ import kr.ac.bike.other.myUtils;
 import net.sf.json.JSONArray;
 
 
+
 /**
  * Handles requests for the application home page.
  */
@@ -61,7 +62,6 @@ public class HomeController {
 		return "result";
 	}
 	
-	
 	@RequestMapping(value = "/disgenet", method = RequestMethod.GET)
 	public String disgenet(Locale locale, Model model) {
 		String diseaseCode = "C0011849"; //C0007131 : nsclc, dm: C0011849
@@ -71,7 +71,7 @@ public class HomeController {
 		//diseaseCode로 현재 table(disgenet_disease_genes)에 있는지 확인하고, 없으면 restfulAPI호출해서 데이터 insert.
 		List<DisgenetVO> voList = genomeService.isExistDisease(diseaseCode);
 		if(voList.size() == 0)	{
-			String url = "https://www.disgenet.org/api/gda/disease/" + diseaseCode + "?min_score=0.5&format=tsv";
+			String url = "https://www.disgenet.org/api/gda/disease/" + diseaseCode + "?min_score=0.5&format=json";
 			//restful api call & print.
 			List<DisgenetVO> tempList = null;
 			

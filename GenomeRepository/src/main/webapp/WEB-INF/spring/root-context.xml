@@ -26,9 +26,9 @@
 
 
 		<property name="url"
-            value="jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC"></property>            
-        <property name="username" value="root"></property>
-        <property name="password" value="1q2w1q2w"></property>
+            value="jdbc:mysql://147.47.56.201:3306/bio_version1?useSSL=false&amp;serverTimezone=UTC"></property>            
+        <property name="username" value="bike"></property>
+        <property name="password" value="123qwe"></property>
 
 
 

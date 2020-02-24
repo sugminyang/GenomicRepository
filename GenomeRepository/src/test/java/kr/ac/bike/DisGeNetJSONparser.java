@@ -1,4 +1,4 @@
-package kr.ac.bike.other;
+package kr.ac.bike;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,13 +8,32 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class myUtils {
-	
-	public static List<DisgenetVO> executeURLQuery(String url) throws IOException {
+import kr.ac.bike.other.DisgenetVO;
+
+
+public class DisGeNetJSONparser {
+
+	@Test
+	public void test() {
+		String diseaseCUI = "C0007131"; 
+		String url = "https://www.disgenet.org/api/gda/disease/" + diseaseCUI + "?min_score=0.5&format=json";
+		try {
+			for(DisgenetVO vo : executeURLQuery(url)) {
+				System.out.println(vo);
+			}
+				
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public List<DisgenetVO> executeURLQuery(String url) throws IOException {
 		BufferedReader in = null;
 		List<DisgenetVO> voList = null;
 
@@ -32,8 +51,8 @@ public class myUtils {
 		con.disconnect();
 		return voList;
 	}
-	
-	private static List<DisgenetVO> parserJSON(String jsonString)	{
+
+	public List<DisgenetVO> parserJSON(String jsonString)	{
 		List<DisgenetVO> voList = new ArrayList<DisgenetVO>();
 		System.out.println(jsonString);
 		JsonParser jsonParser = new JsonParser();
@@ -195,4 +214,5 @@ public class myUtils {
 
 		return voList;
 	}
+
 }
