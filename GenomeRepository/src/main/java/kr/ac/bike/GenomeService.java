@@ -59,10 +59,26 @@ public class GenomeService {
 	}
 
 	public void insertDiseaseGenes(List<DisgenetVO> tempList) {
-		for(DisgenetVO vo: tempList)	{
-			System.out.println(genomeDAO.insertDiseaseGenes(vo));
+		if(tempList == null)	{
+			System.out.println("Error: data which are score >=0.5 is not existed.");
+			return ;
 		}
 		
+		for(DisgenetVO vo: tempList)	{
+			if(genomeDAO.insertDiseaseGenes(vo) == 1)	{
+				System.out.println("insert success");
+			}
+			else {
+				System.out.println("Error: insert fail");
+			}
+		}
+		
+	}
+
+	public List<String> select100diseases() {
+		List<String> disList = genomeDAO.select100diseases();
+				
+		return disList;
 	}
 	
 }

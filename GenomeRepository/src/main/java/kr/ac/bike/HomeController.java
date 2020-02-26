@@ -39,17 +39,25 @@ public class HomeController {
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public String show(Model model, HttpServletRequest request) {
-		String phenotype = request.getParameter("phenotype");
-		logger.info("phenotype: " +phenotype);
+		String type = request.getParameter("type[]");
+		String text = request.getParameter("text[]");
+		logger.info("phenotype: " +text);
 		
 		
 		//		Service에 특정 business logic 함수 하나 호출.
 		List<PatientVO> voList = null;
-		if(phenotype.length() == 0)	{
-			voList = genomeService.selectAllData();
+		if(type.equalsIgnoreCase("phenotype"))	{ //phenotype
+			if(text.length() == 0)	{
+				voList = genomeService.selectAllData();
+			}
+			else	{
+				voList = genomeService.selectPhenotype(text);
+			}
 		}
-		else	{
-			voList = genomeService.selectPhenotype(phenotype);
+		else	{	//geneSymbol
+			if(text.length() != 0)	{
+//				voList = genomeService.selectPatientByGene(text);
+			}
 		}
 		
 		//vo객체들을 json형태로 변경해서 view에 전달해야함 !!
@@ -87,6 +95,44 @@ public class HomeController {
 		}
 		else	{
 			model.addAttribute("data",voList);
+		}
+		
+		return "home";
+	}
+	
+	
+//	임시 URI로 disease name 100개에 대해서 disease-genes데이터 저장.
+	@RequestMapping(value = "/disgenet2", method = RequestMethod.GET)
+	public String disgenet2(Model model) {
+		
+//		diseaseCode 가져오기.
+//		String diseaseCode = "C0011849"; //C0007131 : nsclc, dm: C0011849
+		
+		List<String> diseaseList = genomeService.select100diseases();
+		for(String diseaseCode : diseaseList)	{
+			System.out.println(diseaseCode);
+			
+			//diseaseCode로 현재 table(disgenet_disease_genes)에 있는지 확인하고, 없으면 restfulAPI호출해서 데이터 insert.
+			List<DisgenetVO> voList = genomeService.isExistDisease(diseaseCode);
+			if(voList.size() == 0)	{
+				String url = "https://www.disgenet.org/api/gda/disease/" + diseaseCode + "?min_score=0.5&format=json";
+				//restful api call & print.
+				List<DisgenetVO> tempList = null;
+				
+				try {
+					tempList = myUtils.executeURLQuery(url);
+					genomeService.insertDiseaseGenes(tempList);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				System.out.println("unstored disease...");
+				model.addAttribute("data",tempList);
+			}
+			else	{
+				model.addAttribute("data",voList);
+			}
+			
 		}
 		
 		return "home";

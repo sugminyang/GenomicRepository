@@ -1,6 +1,7 @@
 package kr.ac.bike.other;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -23,12 +24,17 @@ public class myUtils {
 		HttpURLConnection con = (HttpURLConnection)obj.openConnection(); 
 		con.setRequestMethod("GET");
 		con.connect();
+		try
+		{
+			in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
+			
+			String line = in.readLine();
+			voList = parserJSON(line);
+		}
+		catch(FileNotFoundException e)	{
+			voList = null;
+		}
 		
-		in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
-		
-		String line = in.readLine();
-		voList = parserJSON(line);
-
 		con.disconnect();
 		return voList;
 	}
@@ -71,12 +77,22 @@ public class myUtils {
 			}					
 			vo.setGene_symbol(gene_symbol);
 			
-//			double score;	
-			double score = object.get("score").getAsDouble();
+			double score;	
+			if(!object.get("score").isJsonNull())	{
+				score = object.get("score").getAsDouble();
+			}
+			else	{
+				score = 0;
+			}		
 			vo.setScore(score);
 			
-//			double ei;	
-			double ei = object.get("ei").getAsDouble();
+			double ei;	
+			if(!object.get("ei").isJsonNull())	{
+				ei = object.get("ei").getAsDouble();
+			}
+			else	{
+				ei = 0;
+			}		
 			vo.setEi(ei);
 			
 			String geneid;
@@ -97,8 +113,13 @@ public class myUtils {
 			}
 			vo.setProtein_class(protein_class);
 			
-//			double gene_dpi;
-			double gene_dpi = object.get("gene_dpi").getAsDouble();
+			double gene_dpi;
+			if(!object.get("gene_dpi").isJsonNull())	{
+				gene_dpi = object.get("gene_dpi").getAsDouble();
+			}
+			else	{
+				gene_dpi = 0;
+			}
 			vo.setGene_dpi(gene_dpi );
 			
 			String disease_semantic_type;
@@ -110,12 +131,22 @@ public class myUtils {
 			}				
 			vo.setDisease_semantic_type(disease_semantic_type );
 			
-//			int year_final;
-			int year_final = object.get("year_final").getAsInt();
+			int year_final;
+			if(!object.get("year_final").isJsonNull())	{
+				year_final = object.get("year_final").getAsInt();
+			}
+			else	{
+				year_final = 0;
+			}
 			vo.setYear_final(year_final);
 			
-//			double gene_dsi;
-			double gene_dsi = object.get("gene_dsi").getAsDouble();
+			double gene_dsi;
+			if(!object.get("gene_dsi").isJsonNull())	{
+				gene_dsi = object.get("gene_dsi").getAsDouble();
+			}
+			else	{
+				gene_dsi = 0;
+			}
 			vo.setGene_dsi(gene_dsi );
 			
 			String el;
@@ -136,8 +167,13 @@ public class myUtils {
 			}				
 			vo.setProtein_class_name(protein_class_name );
 			
-//			double gene_pli;
-			double gene_pli = object.get("gene_pli").getAsDouble();
+			double gene_pli;
+			if(!object.get("gene_pli").isJsonNull())	{
+				gene_pli = object.get("gene_pli").getAsDouble();
+			}
+			else	{
+				gene_pli = 0;
+			}		
 			vo.setGene_pli(gene_pli);
 			
 			String disease_class_name;
@@ -176,8 +212,13 @@ public class myUtils {
 			}		
 			vo.setDisease_type(disease_type );
 			
-//			int year_initial;
-			int year_initial = object.get("year_initial").getAsInt();
+			int year_initial;
+			if(!object.get("year_initial").isJsonNull())	{
+				year_initial = object.get("year_initial").getAsInt();
+			}
+			else	{
+				year_initial = 0;
+			}
 			vo.setYear_initial(year_initial );
 			
 			String disease_class;
@@ -189,7 +230,7 @@ public class myUtils {
 			}					
 			vo.setDisease_class(disease_class );
 			
-			System.out.println(vo);
+//			System.out.println(vo);
 			voList.add(vo);
 		}
 

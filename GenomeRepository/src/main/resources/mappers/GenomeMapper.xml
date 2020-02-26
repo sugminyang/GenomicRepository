@@ -5,12 +5,12 @@
   
 <mapper namespace="kr.ac.mappers.GenomeMapper">
     <select id="selectAllData" resultType="PatientVO">
-        select distinct sinfo.dcc_project_code as code,	 wgs.patientID as sample
+        select distinct sinfo.dcc_project_code as code,	 sinfo.submitter_donor_id as sample
         from sample_info as sinfo join wgs on(wgs.patientID = sinfo.donor_unique_id);
     </select>
     
 	<select id="selectPhenotype" resultType="PatientVO" parameterType="string">
-        select distinct sinfo.dcc_project_code as code,	 wgs.patientID as sample
+        select distinct sinfo.dcc_project_code as code,	 sinfo.submitter_donor_id as sample
         from sample_info as sinfo join wgs on(wgs.patientID = sinfo.donor_unique_id) 
         where sinfo.dcc_project_code like #{phenotype};
     </select>
@@ -32,7 +32,9 @@
 		(#{score},#{gene_dsi},#{disease_name},#{gene_symbol},#{gene_dpi},#{diseaseid},#{disease_class},#{el},#{protein_class_name},#{disease_semantic_type},#{gene_pli},#{year_initial},#{ei},#{uniprotid},#{year_final},#{disease_class_name},#{geneid},#{source},#{protein_class},#{disease_type})
     </insert>
     
-    
+    <select id="select100diseases" resultType="string">
+		select distinct diseaseId from DiseaseTerm limit 100;    
+    </select>
         
 </mapper>
 

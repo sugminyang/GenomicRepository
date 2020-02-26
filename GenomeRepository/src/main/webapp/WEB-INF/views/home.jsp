@@ -13,8 +13,11 @@
 ${data}
 
 <form role="form" method="get" action="/show">
-	<label>phenotype:</label>
-	<input name="phenotype" type="text"></input><button class="btn btn-primary" type="submit">submit</button>
+	<select id="searchType" name="type[]">
+	  <option value="phenotype">Phenotype</option>
+	  <option value="genesymbol">GeneSymbol</option>
+	</select>
+	<input name="text[]" type="text"></input><button class="btn btn-primary" type="submit">submit</button>
 </form>
 </body>
 </html>

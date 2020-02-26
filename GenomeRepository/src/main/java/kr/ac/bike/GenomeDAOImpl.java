@@ -54,4 +54,9 @@ public class GenomeDAOImpl implements GenomeDAO {
 		return sqlSession.insert(Namespace+".insertDiseaseGenes",vo);
 	}
 
+	@Override
+	public List<String> select100diseases() {
+		return sqlSession.selectList(Namespace+".select100diseases");
+	}
+
 }

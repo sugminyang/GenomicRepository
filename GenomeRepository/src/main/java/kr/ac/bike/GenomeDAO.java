@@ -9,5 +9,6 @@ public interface GenomeDAO {
 	List<DisgenetVO> selectAllDisGeNet();
 	List<DisgenetVO> isExistDisease(String diseaseCode);
 	int insertDiseaseGenes(DisgenetVO vo);
+	List<String> select100diseases();
 
 }
